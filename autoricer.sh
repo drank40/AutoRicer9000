@@ -12,6 +12,7 @@ read USERNAME
 useradd -mg wheel $USERNAME
 echo "Added user $USERNAME"
 echo "$USERNAME ALL=(ALL) ALL" >> /etc/sudoers
+passwd $USERNAME
 echo "Installing video drivers..."
 if [[ "$(lspci | grep VGA | grep NVIDIA)" != "" ]]; then
 	pacman -S --noconfirm --quiet nvidia
