@@ -10,4 +10,5 @@ cowsay $INTRO
 echo "What would you like your user to be called?"
 read USERNAME
 useradd -mg wheel $USERNAME
+echo "Added user $USERNAME"
 
