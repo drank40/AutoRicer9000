@@ -11,7 +11,7 @@ echo "What would you like your user to be called?"
 read USERNAME
 useradd -mg wheel $USERNAME
 echo "Added user $USERNAME"
-echo "$USERNAME ALL=(ALL) ALL" >> /etc/sudoers
+echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
 passwd $USERNAME
 echo "Installing video drivers..."
 if [[ "$(lspci | grep VGA | grep NVIDIA)" != "" ]]; then
@@ -25,6 +25,7 @@ sudo chown -R $USERNAME ./yay-git
 cd yay-git
 sudo -u $USERNAME -H sh -c "makepkg -si"
 sudo -u $USERNAME -H sh -c "yay -S adobe-source-code-pro-fonts ttf-font-awesome xorg-server xorg-xinit xorg-xrdb xorg-xsetroot xorg-setxkbmap xcompmgr libxinerama libxft feh lm_sensors autocutsel pulseaudio"
+cd
 DWMREPO="https://github.com/drank40/dwm"
 DMENUREPO="https://github.com/MentalOutlaw/dmenu"
 git clone $DWMREPO
@@ -35,4 +36,6 @@ cd ../dmenu
 make clean install 
 cd ..
 mv dwm/xfiles/xinitrc /home/$USERNAME/.xinitrc
-su - $USERNAME
+chown /home/$USERNAME/.xinitrc $USERNAME 
+cowsay "ALL DONE! Please reboot and log into the user to startx."
+
