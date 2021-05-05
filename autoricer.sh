@@ -11,7 +11,7 @@ echo "What would you like your user to be called?"
 read USERNAME
 useradd -mg wheel $USERNAME
 echo "Added user $USERNAME"
-echo '$USERNAME  ALL=(ALL:ALL) ALL' >> /etc/sudoers
+echo "$USERNAME ALL=(ALL) ALL" >> /etc/sudoers
 echo "Installing video drivers..."
 if [[ "$(lspci | grep VGA | grep NVIDIA)" != "" ]]; then
 	pacman -S --noconfirm --quiet nvidia
