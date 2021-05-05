@@ -24,7 +24,7 @@ sudo git clone https://aur.archlinux.org/yay-git.git
 sudo chown -R $USERNAME ./yay-git
 cd yay-git
 sudo -u $USERNAME -H sh -c "makepkg -si"
-sudo -u $USERNAME -H sh -c "yay -S adobe-source-code-pro-fonts ttf-font-awesome xorg-server xorg-xinit xorg-xrdb xorg-xsetroot xorg-setxkbmap xcompmgr libxinerama feh lm_sensors autocutsel pulseaudio"
+sudo -u $USERNAME -H sh -c "yay -S adobe-source-code-pro-fonts ttf-font-awesome xorg-server xorg-xinit xorg-xrdb xorg-xsetroot xorg-setxkbmap xcompmgr libxinerama libxft feh lm_sensors autocutsel pulseaudio"
 DWMREPO="https://github.com/drank40/dwm"
 DMENUREPO="https://github.com/MentalOutlaw/dmenu"
 git clone $DWMREPO
