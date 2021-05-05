@@ -25,4 +25,14 @@ sudo chown -R $USERNAME ./yay-git
 cd yay-git
 sudo -u $USERNAME -H sh -c "makepkg -si"
 sudo -u $USERNAME -H sh -c "yay -S adobe-source-code-pro-fonts ttf-font-awesome xorg-server xorg-xinit xorg-xrdb xorg-xsetroot xorg-setxkbmap xcompmgr libxinerama feh lm_sensors autocutsel pulseaudio"
-
+DWMREPO="https://github.com/drank40/dwm"
+DMENUREPO="https://github.com/MentalOutlaw/dmenu"
+git clone $DWMREPO
+git clone $DMENUREPO
+cd dwm 
+make clean install
+cd ../dmenu
+make clean install 
+cd ..
+mv dwm/xfiles/xinitrc /home/$USERNAME/.xinitrc
+su - $USERNAME
